@@ -1,28 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
-// fetch data to build default main page with posts from r/popular
-// post example: { id: '', like: false, dislike: false, comments: [] }
-const apiData = 'https://www.reddit.com/r/popular.json'
-const allPostsData = apiData.data.children
-
-// json api url for a 'cake recipes' search: 
-// https://www.reddit.com/search.json?q=cake%20recipes
-
-/* 
-the api returns an object with other objects (posts) inside data.children path
-inside this path we will fetch for each post:  
-data.num_comments (# of comments), 
-done: data.id, data.thumbnail, data.author, data.title, data.ups (# of upvotes),
-data.subreddit_name_prefixed (subreddit in the 'r/subreddit' format),
-*/
+async function getData() {
+    const response = await fetch(`https://www.reddit.com/search.json?q=bears`);
+    const posts = await response.json();
+    return posts.data.children;
+};
 
 const allPostsSlice = createSlice({
     name: 'allPosts',
     initialState: [],
     reducers: {
-        loadData: () => {
-            return allPostsData;
-        },
+        loadData:
+            getData(),
         toggleLike: (state, action) => {
             return state.map(post =>
                 (post.data.id === action.payload.id) ? {

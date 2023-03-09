@@ -1,4 +1,3 @@
-import '../styles/App.css';
 import React from 'react';
 import { AllPosts } from '../features/allPosts/AllPosts.js';
 import { SearchTerm } from '../features/searchTerm/SearchTerm.js';
