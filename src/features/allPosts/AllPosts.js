@@ -1,9 +1,9 @@
 import { selectAllPosts, toggleLike, toggleDislike, loadData } from './allPostsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useEffect } from 'react';
-import Post from '../features/Post'
-import VoteButtom from '../features/VoteButtom'
-import CommentsButtom from '../features/CommentsButtom'
+import Post from '../../common/Post'
+import VoteButtom from '../../common/VoteButtom'
+import CommentsButtom from '../../common/CommentsButtom'
 
 const likeIcon = '../img/upvote.svg'
 const dislikeIcon = '../img/downvote.svg'

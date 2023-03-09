@@ -25,7 +25,7 @@ const allPostsSlice = createSlice({
         },
         toggleLike: (state, action) => {
             return state.map(post =>
-                (post.id === action.payload.id) ? {
+                (post.data.id === action.payload.id) ? {
                     ...post,
                     like: !post.like,
                     dislike: false
@@ -44,4 +44,4 @@ const allPostsSlice = createSlice({
 
 export const selectAllPosts = state => state.allPosts
 export const { loadData, toggleLike, toggleDislike } = allPostsSlice.actions
-export const { allPostsReducer } =  allPostsSlice.reducer
+export default allPostsSlice.reducer

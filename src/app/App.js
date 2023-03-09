@@ -1,9 +1,17 @@
 import '../styles/App.css';
+import React from 'react';
+import { AllPosts } from '../features/allPosts/AllPosts.js';
+import { SearchTerm } from '../features/searchTerm/SearchTerm.js';
 
-function App() {
+export default function App() {
   return (
-    // HIGH LEVEL JSX CODE FOR THE APP
+    <main>
+      <section>
+        <SearchTerm/>
+      </section>
+      <section>
+        <AllPosts/>
+      </section>
+    </main>
   );
 }
-
-export default App;

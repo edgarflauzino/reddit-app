@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { selectSearchTerm } from './searchTermSlice'
+import { selectTerm } from './searchTermSlice'
 import { setSearchTerm, clearSearchTerm } from './searchTermSlice.js';
 
 const searchIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/search.svg'
 const clearIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/clear.svg'
 
 export const SearchTerm = () => {
-    const search = useSelector(selectSearchTerm);
-    const dispatch = useDispatch();
+  const search = useSelector(selectTerm);
+  const dispatch = useDispatch();
 
   const onSearchTermChangeHandler = (e) => {
     const userInput = e.target.value;
