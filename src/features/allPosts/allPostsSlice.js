@@ -30,5 +30,7 @@ const allPostsSlice = createSlice({
     }
 })
 
+export const selectAllPosts = state => state.allPosts
+
 export const { loadData, toggleLike, toggleDislike } = allPostsSlice.actions
 export const { allPostsReducer } =  allPostsSlice.reducer
