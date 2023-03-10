@@ -1,18 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-async function getData() {
-    const response = await fetch(`https://www.reddit.com/search.json?q=bears`);
-    const posts = await response.json();
-    return posts.data.children;
-};
-
-const allPostsSlice = createSlice({
+export const allPostsSlice = createSlice({
     name: 'allPosts',
-    initialState: [],
+    initialState: {
+        posts: [],
+        isLoading: false,
+        error: null
+    },
     reducers: {
-        loadData:
-            getData(),
-        toggleLike: (state, action) => {
+        /*toggleLike: (state, action) => {
             return state.map(post =>
                 (post.data.id === action.payload.id) ? {
                     ...post,
@@ -27,10 +24,44 @@ const allPostsSlice = createSlice({
                     like: false,
                     dislike: !post.dislike
                 } : post)
+        }*/
+    },
+    extraReducers: {
+        fetchRedditPostsRequest: (state) => {
+        state.isLoading = true;
         },
-    }
+        fetchRedditPostsSuccess: (state, action) => {
+        state.isLoading = false;
+        state.posts = action.payload;
+        },
+        fetchRedditPostsFailure: (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        },
+    },
 })
 
-export const selectAllPosts = state => state.allPosts
-export const { loadData, toggleLike, toggleDislike } = allPostsSlice.actions
+export const fetchRedditPosts = () => {
+    return async (dispatch) => {
+      dispatch(fetchRedditPostsRequest());
+  
+      try {
+        const response = await axios.get('https://www.reddit.com/search.json?q=bears');
+        const posts = response.data.data.children.map(({ data }) => ({
+          id: data.id,
+          title: data.title,
+          author: data.author,
+          votes: data.ups,
+          thumbnail: data.thumbnail,
+          comments: data.num_comments,
+        }));
+  
+        dispatch(fetchRedditPostsSuccess(posts));
+      } catch (error) {
+        dispatch(fetchRedditPostsFailure(error.message));
+      }
+    };
+  };
+
+export const {fetchRedditPostsRequest, fetchRedditPostsSuccess, fetchRedditPostsFailure} = allPostsSlice.actions;
 export default allPostsSlice.reducer

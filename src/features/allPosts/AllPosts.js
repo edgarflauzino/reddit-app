@@ -1,4 +1,4 @@
-import { selectAllPosts, toggleLike, toggleDislike, loadData } from './allPostsSlice'
+import { fetchRedditPosts } from './allPostsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useEffect } from 'react';
 import Post from '../../common/Post'
@@ -9,11 +9,11 @@ const likeIcon = '../img/upvote.svg'
 const dislikeIcon = '../img/downvote.svg'
 
 export const AllPosts = () => {
-    const posts = useSelector(selectAllPosts);
     const dispatch = useDispatch();
+    const { posts, isLoading, error } = useSelector(state => state.allPosts)
 
     const onFirstRender = () => {
-        dispatch(loadData());
+        dispatch(fetchRedditPosts());
     }
     
     useEffect(onFirstRender, [])
@@ -21,13 +21,13 @@ export const AllPosts = () => {
     return (
         <div id='all-posts' className='posts-container'>
             {posts.map(post => (
-                <Post post={post.data}>
-                    <VoteButtom onClickHandler={dispatch(toggleLike(post.id))}
+                <Post post={post}>
+                    {/*<VoteButtom onClickHandler={dispatch(toggleLike(post.id))}
                                 icon={likeIcon}/>
-                    <h4>{post.data.ups}</h4>
+                    <h4>{post.ups}</h4>
                     <VoteButtom onClickHandler={dispatch(toggleDislike(post.id))}
                                 icon={dislikeIcon}/>
-                    <CommentsButtom />
+                    <CommentsButtom />*/}
                 </Post>
             ))}
         </div>
