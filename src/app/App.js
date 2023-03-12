@@ -5,7 +5,7 @@ import styles from '../styles/App.css'
 
 export default function App() {
   return (
-    <main>
+    <main style={styles.AllPosts}>
       <section>
         <SearchTerm/>
       </section>
