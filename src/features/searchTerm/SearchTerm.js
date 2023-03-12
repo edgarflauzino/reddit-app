@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectTerm } from './searchTermSlice'
 import { setSearchTerm, clearSearchTerm } from './searchTermSlice.js';
 
-const searchIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/search.svg'
+// const searchIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/search.svg'
 const clearIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/clear.svg'
 
 export const SearchTerm = () => {
@@ -21,7 +21,7 @@ export const SearchTerm = () => {
 
   return (
     <div id="search-container">
-      <img id="search-icon" alt="" src={searchIconUrl} />
+      {/*<img id="search-icon" alt="" src={searchIconUrl} />*/}
       <input
         id="search"
         type="text"

@@ -6,28 +6,28 @@ import { selectTerm } from '../searchTerm/searchTermSlice';
 
 export const AllPosts = () => {
     const dispatch = useDispatch();
-    const { isLoading, data, error } = useSelector(selectPosts);
+    const { isLoading, posts, error } = useSelector(selectPosts);
     const searchTerm = useSelector(selectTerm)
     
     useEffect(() => {
-        const delayDebounceFn = setTimeout(() => {
+        const delay = setTimeout(() => {
             dispatch(reddit(searchTerm || 'popular'));
-        }, 1500);
+        }, 1200);
 
-        return () => clearTimeout(delayDebounceFn);
+        return () => clearTimeout(delay);
     }, [searchTerm, dispatch]);
     
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className='loading'>Loading...</div>;
     }
     
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div className='error'>Error: {error}</div>;
     }
 
     return (
         <div id='all-posts' className='posts-container'>
-            {data.map(post => (
+            {posts.map(post => (
                 <Post post={post.data}>
                 </Post>
             ))}
