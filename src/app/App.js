@@ -6,6 +6,9 @@ import styles from '../styles/App.css'
 export default function App() {
   return (
     <main style={styles.AllPosts}>
+      <header>
+        <h1>Mini Reddit</h1>
+      </header>
       <section>
         <SearchTerm/>
       </section>
