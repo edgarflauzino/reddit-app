@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchTerm = createSlice({
     name: 'searchTerm',
-    initialState: 'popular',
+    initialState: '',
     reducers: {
         setSearchTerm: (state, action) => {
             return action.payload;
