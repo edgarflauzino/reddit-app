@@ -1,0 +1,145 @@
+/* Main Styles */
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+  }
+  
+  /* Header Styles */
+  header {
+    width: 100%;
+    height: 50px;
+    background-color: #ff4500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  section {
+    justify-content: center;
+  }
+
+  /* Post Styles */
+
+  .post {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px auto;
+  }
+  
+  .post-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .post-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .post-subreddit {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #666666;
+  }
+  
+  .thumbnail-container {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .post-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .post-author {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #666666;
+  }
+  
+  .post-comments {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #666666;
+  }
+  
+  /* Search Styles */
+  #search-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-top: 20px;
+  }
+  
+  #search-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  #search {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  #search-clear-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #search-clear-button img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    /* adjust styles for screens smaller than 768px */
+    .post {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* adjust styles for screens smaller than 480px */
+    .post {
+      width: 95%;
+    }
+  }
+  
